@@ -23,8 +23,15 @@ renda = st.number_input("Renda Mensal", min_value=500, max_value=100000, value=5
 
 # 📌 Criar botão para fazer a previsão
 if st.button("📊 Fazer Previsão"):
-    entrada = np.array([[idade, tempo_emprego, qtd_filhos, renda]])  # Ajuste conforme necessário
-    score = modelo.predict(entrada)[0]
+    entrada = np.array([[idade, tempo_emprego, qtd_filhos, renda]])
+
+# 📌 Verificar número de features antes da previsão
+    if entrada.shape[1] != modelo.n_features_in_:
+        st.error(f"Erro: O modelo espera {modelo.n_features_in_} features, mas recebeu {entrada.shape[1]}.")
+    else:
+        score = modelo.predict(entrada)[0]
+        st.metric(label="Score do Cliente", value=round(score, 3))
+   
 
     # 📌 Aplicar regra de decisão
     if score >= 0.6:
