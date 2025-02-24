@@ -2,8 +2,8 @@ import streamlit as st
 import joblib
 import numpy as np
 
-# 📌 Caminho do modelo salvo no Google Drive
-model_path = "/content/drive/MyDrive/Especialização em IA/Cientista de Dados - Ebac/Desenvolvimento Modelos com Pandas e Python/Métodos de análise/Projeto 2/output/modelo_credito_rf.pkl"
+# 📌 Caminho do modelo salvo no Gihub
+model_path = "modelo_credito_rf.pkl"
 
 # 📌 Carregar o modelo treinado
 modelo = joblib.load(model_path)
